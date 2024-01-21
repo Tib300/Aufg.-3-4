@@ -1,0 +1,63 @@
+**Aufgabe 3
+fre ls01
+gen zufr = ls01
+mvdecode zufr, mv(-9=.)
+label variable zufr "Lebenszufriedenheit"
+label define zufr 0 "sehr unzufrieden" 10 "sehr zufrieden"
+label values zufr zufr
+tab ls01 zufr, m
+
+
+gen inc_tsd = inc /1000
+mvdecode inc_tsd, mv(-.05 -.032 -.009=.)
+label variable inc_tsd "Monatl. Nettoeinkommen in 1000 €"
+sum inc_tsd, d
+hist inc_tsd 
+
+fre educ
+recode educ (1 2 3=0) (4 5=1) (6 7=.), gen(dum_bild)
+mvdecode dum_bil, mv(-9=.)
+label variable dum_bild "Bildung: hoch"
+label define jn 0 "nein" 1 "ja"
+label values dum_bild jn
+tab educ dum_bild
+
+fre feduc
+recode feduc (1 2 3=0) (4 5=1) (6 7=.), gen(dum_vbild)
+mvdecode dum_vbild, mv(-10 -9 -8=.)
+label variable dum_vbild "Bildung: hoch"
+label values dum_vbild jn
+tab educ dum_vbild
+
+
+tab zufr dum_vbild, col chi2 V
+
+
+graph bar, over(zufr) asyvars stack ytitle("Lebenszufriedenheit") ///
+by(dum_vbil, note("") ti("Hat der Vater ein hoheres Bildung?"))
+
+
+
+
+**Aufgabe 4
+
+reg zufr dum_bil
+
+reg zufr inc_tsd dum_bild
+
+reg zufr dum_vbil if e(sample)
+eststo model_1	
+
+reg zufr dum_vbil inc_tsd if e(sample)
+eststo model_2
+
+esttab model_1 model_2, p label 
+
+reg zufr dum_vbil inc_tsd dum_bild if e(sample)
+eststo model_3
+
+esttab model_1 model_2 model_3, p label
+
+
+
+esttab model_1 model_2 model_3 using Regressionstabelle.rtf, p replace label
