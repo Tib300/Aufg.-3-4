@@ -17,3 +17,16 @@ auf die wir unsere gesamte Hypothese stützen, nämlich ls01 (Lebenszufriedenhei
 Zuerst nehmen wir die missings ab und entwickeln eine neue Variable, die identisch mit der Lebenszufriedenheitsvariable zufr
 ls01 ist. Unser Ausdruck ist "Lebenszufriedenheit", und wir definieren 0 als "sehr unzufrieden", 10 als "sehr zufrieden". Wir 
 führen die Überprüfung mittels tab ls01 zufr, m.
+
+**Graphen
+
+Dieser Zusammenhang ist statistisch hoch signifikant, da der p-Wert kleiner als 0,05 ist. Die Annahme, dass die Bildung des
+Vaters, also soziale Herkunft, nicht mit der sozialen Herkunft zu tun hat, wird verworfen. Es ist vorgesehen, die Annahme zu
+hegen, dass ein solcher Zusammenhang besteht. Cramér's V deutet auf einen schwachen Zusammenhang hin, da er mit 0,04 und 0,3
+liegt. Die Grafik zeigt auf der Y-Achse die Bereiche der Zufriedenheit und auf der X-Achse die Ausprägungen "Sehr zufrieden"
+und "Sehr unzufrieden". Das linke Diagramm zeigt den Zusammenhang zwischen dem Vater und seiner niedrigeren Bildung, das rechte
+Diagramm zeigt den Zusammenhang zwischen dem Vater und der höheren Bildung.
+
+
+Außerdem stellt die Variable, die uns die soziale Herkunft zuweisen will, das Alter des Vaters als eine kategoriale Variable dar. Wenn wir die Missings auf 0 setzen, erzeugen wir eine neue Dummy-Variation dum_vbil, die die Ausprägungen von feduc beinhaltet, und wie bei Bildung kodieren wir sämtliche niedrigere Qualifikationen als 0 und sämtliche höhere Qualifikationen als 1. Die neuste Dummy-Variable heißt "Bildung: Hoch" und weist ihr den Wert jn zu. Am Ende überprüfen wir, ob die Codierung erfolgreich war und setzen tab feduc dum_vbil ein.
+Schließlich planen wir die abhängige Variable, auf die wir unsere gesamte Hypothese stützen, nämlich ls01 (Lebenszufriedenheit), welche eine kategoriale Variable darstellt. Zuerst nehmen wir die missings ab und entwickeln eine neue Variable, die identisch mit der Lebenszufriedenheitsvariable zufr ls01 ist. Unser Ausdruck ist "Lebenszufriedenheit", und wir definieren 0 als "sehr unzufrieden", 10 als "sehr zufrieden". Wir führen die Überprüfung mittels tab ls01 zufr, m.
