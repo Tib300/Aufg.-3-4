@@ -3,3 +3,17 @@ Zuerst erfolgt die Vorbereitung der Variablen "Bildung". Zunächst entfernen wir
 korrelieren wir die niedrigsten Bildungswerte 1 2 3 zu 0 und die höchsten Bildungswerte 4 und 5 zu 1. Unser Name
 ist "Bildung hoch", deshalb haben wir uns für Bildung ausgesprochen und erstellen gleichzeitig einen Label-Container
 jn mit 0 "nein" und 1 "ja". Auch in den anderen Variablen wird dieses Label verwendet. Dum_bil hat uns das bestätigt und verwendet dazu den Befehl tab educ dum_bil.
+
+
+Außerdem, um die metrische Variable "Einkommen" zu definieren, verwenden wir die metrische Variable "Einkommen", welche
+im Experiment als Moderator dienen sollte, indem wir eine neue Variable inc_tsd /1000 verwenden, um die Interpretation
+der Werte zu vereinfachen und das Geld in Tausend zu berechnen. Es wird von uns als "Monat" bezeichnet. "Das Nettoeinkommen
+in 1000" wird von Ihnen durch die Befehle sum und hist bestätigt. Die Variable, mit der wir die soziale Herkunft operationalisieren
+wollen, ist eine Kategorische Variable. Wenn wir die Missings auf 0 setzen, erzeugen wir eine neue Dummy-Variation dum_vbil,
+die die Ausprägungen von feduc beinhaltet, und wie bei Bildung kodieren wir sämtliche niedrigere Qualifikationen als 0 und 
+sämtliche höhere Qualifikationen als 1. Die neuste Dummy-Variable heißt "Bildung: Hoch" und weist ihr den Wert jn zu. Wir
+prüfen, ob die Codierung erfolgreich war und setzen tab feduc dum_vbil ein. Schließlich planen wir die abhängige Variable,
+auf die wir unsere gesamte Hypothese stützen, nämlich ls01 (Lebenszufriedenheit), welche eine kategoriale Variable darstellt.
+Zuerst nehmen wir die missings ab und entwickeln eine neue Variable, die identisch mit der Lebenszufriedenheitsvariable zufr
+ls01 ist. Unser Ausdruck ist "Lebenszufriedenheit", und wir definieren 0 als "sehr unzufrieden", 10 als "sehr zufrieden". Wir 
+führen die Überprüfung mittels tab ls01 zufr, m.
