@@ -28,5 +28,43 @@ und "Sehr unzufrieden". Das linke Diagramm zeigt den Zusammenhang zwischen dem V
 Diagramm zeigt den Zusammenhang zwischen dem Vater und der höheren Bildung.
 
 
-Außerdem stellt die Variable, die uns die soziale Herkunft zuweisen will, das Alter des Vaters als eine kategoriale Variable dar. Wenn wir die Missings auf 0 setzen, erzeugen wir eine neue Dummy-Variation dum_vbil, die die Ausprägungen von feduc beinhaltet, und wie bei Bildung kodieren wir sämtliche niedrigere Qualifikationen als 0 und sämtliche höhere Qualifikationen als 1. Die neuste Dummy-Variable heißt "Bildung: Hoch" und weist ihr den Wert jn zu. Am Ende überprüfen wir, ob die Codierung erfolgreich war und setzen tab feduc dum_vbil ein.
-Schließlich planen wir die abhängige Variable, auf die wir unsere gesamte Hypothese stützen, nämlich ls01 (Lebenszufriedenheit), welche eine kategoriale Variable darstellt. Zuerst nehmen wir die missings ab und entwickeln eine neue Variable, die identisch mit der Lebenszufriedenheitsvariable zufr ls01 ist. Unser Ausdruck ist "Lebenszufriedenheit", und wir definieren 0 als "sehr unzufrieden", 10 als "sehr zufrieden". Wir führen die Überprüfung mittels tab ls01 zufr, m.
+Außerdem stellt die Variable, die uns die soziale Herkunft zuweisen will, das Alter des Vaters als eine kategoriale Variable dar.
+Wenn wir die Missings auf 0 setzen, erzeugen wir eine neue Dummy-Variation dum_vbil, die die Ausprägungen von feduc beinhaltet, 
+und wie bei Bildung kodieren wir sämtliche niedrigere Qualifikationen als 0 und sämtliche höhere Qualifikationen als 1. Die
+neuste Dummy-Variable heißt "Bildung: Hoch" und weist ihr den Wert jn zu. Am Ende überprüfen wir, ob die Codierung erfolgreich 
+war und setzen tab feduc dum_vbil ein.
+
+Aufgabe 4: Aufgaben
+Zuerst erfolgt die lineare Regression durch con reg zufr dum_bil, die wir anhand von 3090 Beobachtungen durchführen können. Es
+ist uns klar, dass das R2 0,0130 beträgt und somit 10,3 % der Lebensqualität auf die unabhängige Variable, in diesem Fall den
+Vater, zurückzuführen ist. In der Statistik liegt dieser Wert bei p0,001. Wir beginnen, die Analyse in verschiedene Modelle
+einzuteilen und anschließend eine Schätzung der Regression aller nicht abhängigen Variablen durchzuführen, indem wir die Regression
+aller nicht abhängigen Variablen mittels Reg zufr inc_tsd dum_bild durchführen.
+
+Wir erstellen das erste Modell M1, indem wir eine Regression mit e(Stichprobe) durchführen, um die fehlenden Werte der abhängigen
+Variablen und der zentralen unabhängigen Variablen, in diesem Fall zufr und dummy_vbil, herauszufiltern, mit reg zufr dum_vbil if
+e(sample) und estso Modell_1. Wir haben aus zahlreichen Studien gelernt, dass Einkommensverhältnisse einen direkten Einfluss auf
+die Zufriedenheit der Individuen haben, indem sie ihnen die Möglichkeit geben, verschiedene Mittel und Guter zu nutzen und sich
+glücklicher zu fühlen. Daher könnte Einkommen eine hilfreiche Unterstützung für eine Person darstellen und eine positive Wirkung
+auf ihr Wohlergehen entfalten. Deshalb testen wir anhand eines Regressionsmodells, ob es sich wirklich um einen Mediator handelt.
+Reg zufr dum_vbil inc_vbil inc_vbil if if e(sample) eststo model_2 Wir vergleichen die beiden Modelle mit esttab model_1 model_2,
+p label reg zufr dum_vbil inc_tsd if e(sample) eststo model_2, und durch die Kontrolle auf Eikommen verrigert sich der Effekt des
+Wohnorts auf die Lebenszufriedenheit, bleibt deswegen weiterhin bestehen und gleichfalls statistisch signifikant. Es deutet darauf
+hin, dass Eikommen als Vermittler zwischen der Erziehung des Vaters und der Zufriedenheit des Kindes fungiert. Der Effekt des Berufs 
+des Vaters auf die Lebenszufriedenheit wird zu einem großen Anteil darüber vermittelt. Die Zufriedenheit des Individuums hängt nicht
+nur von seinem höheren Einkommen ab, sondern ebenso von einem verbesserten sozialen Status, was wiederum ein gewisses Maß an Sicherheit
+mit sich bringt. Die Bedeutung des sozialen Kapitals, welches durch die Ausbildung erworben wird, spielt eine wichtige Rolle im Leben
+jedes Einzelnen. Wir führen dann eine Regression mit dem 3. Modell M3, wo unter Kontrolle die Variable Bildung mit reg zufr dum_vbil
+inc_tsd dum_bild if e(sample) eststo model_3 ist. Dann vergleichen wir in einer Tabelle den Einfluss der 3 verschiedenen
+Regressionsmodelle, um festzustellen, ob es einen Zusammenhang von Bildung als Mediator mit diesem Modell gibt_1 Modell_2 Modell_3,
+p label. Durch die Kontrolle auf Bildung verringert sich der Effekt der Bildung des Vaters auf die Lebenszufriedenheit, und ist die 
+Variable nicht mehr statistisch signifikant. Das deutet darauf hin, dass Bildung keine Drittvariable zwischen Bildung des Vaters 
+und Lebenszufriedenheit darstellt.
+
+**Tabelle zur Regressionsanalyse
+
+Aus den empirischen Ergebnissen lässt sich ableiten, dass die Hypothese bezüglich des Einkommens als Mediator zwischen sozialer
+Existenz und Lebenszufriedenheit einer Person richtig ist. Bei der Regression wurde Bildung ausgeschlossen, da sie in dieser Situation
+keine eigenständige Variable darstellte. Diese Zeitspanne ist ausschlaggebend für die Bestimmung des Vermittlerstatus zwischen der
+einen und der anderen Variable, da sie genau in der Mitte zwischen Bildung des Vaters und Lebenszufriedenheit liegt, wodurch eine
+Korrelation zwischen ihnen erreicht wird.
